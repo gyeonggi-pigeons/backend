@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for mom-ma on 2024-08-10T23:37:06+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'mom-ma'
+primary_region = 'nrt'
+
+[build]
+
+[http_service]
+  internal_port = 8000
+  force_https = false
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '2gb'
+  cpu_kind = 'shared'
+  cpus = 2
+
+[env]
+  CSRF_TRUSTED_ORIGINS = 'https://mom-ma.fly.dev'
