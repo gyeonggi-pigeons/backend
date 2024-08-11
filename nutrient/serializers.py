@@ -43,9 +43,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class UserWeightSerializer(serializers.ModelSerializer):
+    current_weight = serializers.SerializerMethodField()
+    weight_difference = serializers.SerializerMethodField()
+
+    def get_current_weight(self, obj):
+        return obj.weights.last().weight
+
+    def get_weight_difference(self, obj):
+        return obj.weights.last().weight - obj.weight
+
     class Meta:
         model = UserProfile
         fields = '__all__'
+
 
 
 class UserFoodSerializer(serializers.ModelSerializer):
