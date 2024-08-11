@@ -57,8 +57,9 @@ class UserWeightSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class UserFoodSerializer(serializers.ModelSerializer):
+    food = NutrientSerializer(read_only=True)
+
     class Meta:
         model = UserFood
         fields = '__all__'

@@ -165,3 +165,5 @@ REST_FRAMEWORK = {
     # "PAGE_SIZE": 10,
     # "EXCEPTION_HANDLER": "config.exceptions.custom_exception_handler",
 }
+
+CORS_ALLOW_ALL_ORIGINS = True

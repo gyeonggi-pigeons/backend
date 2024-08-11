@@ -120,8 +120,8 @@ class UserFoodPerTime(APIView):
         consumed_foods = request.user.consumed_foods.filter(
             time=time, created_at=date)
         print(consumed_foods)
-        nutrients = [food.food for food in consumed_foods]
-        serializer = NutrientSerializer(nutrients, many=True)
+        # nutrients = [food.food for food in consumed_foods]
+        serializer = UserFoodSerializer(consumed_foods, many=True)
         total_carbohydrates = consumed_foods.aggregate(
             total_carbohydrates=Sum(F('food__carbohydrate') * F('serving') * F('food__food_weight') / F('food__nutrition_content_standard'))).get('total_carbohydrates')
         total_protein = consumed_foods.aggregate(
